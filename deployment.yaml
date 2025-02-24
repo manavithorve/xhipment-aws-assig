@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-api
+  namespace: hello-world-api
+  labels:
+    app: hello-world-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-world-api
+  template:
+    metadata:
+      labels:
+        app: hello-world-api
+    spec:
+      containers:
+        - name: hello-world-api
+          image: 781431162438.dkr.ecr.us-east-1.amazonaws.com/hello-world-api:latest
+          ports:
+            - containerPort: 8080
